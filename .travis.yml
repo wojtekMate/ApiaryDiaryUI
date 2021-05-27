@@ -7,7 +7,6 @@ branches:
   only:
   - master
 before_install:
-- sudo apt-get -q update
 - sudo apt-get install sshpass
 before_script:
   - chmod -R a+x scripts
