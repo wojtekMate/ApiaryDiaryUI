@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'apiary-diary';
-  private baseUrl = "http://api.apiary-diary.com/";
+  private baseUrl = "https://api.apiary-diary.com/";
   message : string = "";
   private headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
   private params = new HttpParams({fromString: 'name=term'});
