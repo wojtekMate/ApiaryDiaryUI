@@ -43,3 +43,19 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+# Local History for Visual Studio Code
+.history/
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+/.vs/ApiaryDiary-ClientApp/v16/*.suo
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
