@@ -1,12 +1,12 @@
   ### STAGE 1: Build ###
-FROM node:14.15.4 AS build
+FROM node:latest as build
 WORKDIR /appUI
 COPY src ./src
 COPY *.json ./
-RUN npm install -g @angular/cli@7.3.10
+RUN npm install -g @angular/cli@12.2.1
 RUN npm install
 RUN ng build --prod
 
 FROM nginx:alpine as deploy
 WORKDIR /appUI
-COPY --from=build /appUI/dist/apiary-diary/*.* /usr/share/nginx/html/
+COPY --from=build /appUI/dist/ApiaryDiary-ClientApp/*.* /usr/share/nginx/html/
