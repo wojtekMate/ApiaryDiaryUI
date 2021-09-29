@@ -1,6 +1,9 @@
 import { state } from '@angular/animations';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 const SMALL_WIDTH_BREAKPOINT =720;
 
@@ -12,7 +15,10 @@ const SMALL_WIDTH_BREAKPOINT =720;
 export class SideNavComponent implements OnInit {
   showFiller = false;
   public isScreenSmall: boolean | undefined;
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  users: Observable<User[]> | undefined;
+  constructor(
+    private breakpointObserver: BreakpointObserver, 
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -21,6 +27,15 @@ export class SideNavComponent implements OnInit {
         .subscribe((state: BreakpointState) => {
           this.isScreenSmall =state.matches;
         })
+
+        this.users = this.userService.users;
+        this.userService.loadAll(); //load collection
+
+        this.users.subscribe(data => {
+          console.log(data)
+        })
+
+
   }
 
 }

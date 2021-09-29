@@ -14,7 +14,7 @@
     }
     
     .app-sidenav{
-      width:160px;
+      width:240px;
     }
     .mat-drawer-side {
       border: none;
@@ -22,11 +22,44 @@
     :host ::ng-deep .mat-toolbar {
       background-color: #000000  ;
     }
-  
-    :host ::ng-deep  .mat-toolbar{
-      background-color: #000000 ;
-    }
+  .icon {
+    color: yellow;
+  }
+  .icon:hover {
+    color: yellow;
+  }
 
+  .yellow{
+    background-color: yellow;
+  }
+  .black{
+    background-color: black;
+  }
     .wrapper{
       margin: 50px;
     }
+
+    .other{
+      flex: 1 1 auto;
+      background-color: red;
+    }
+    .box {
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+    }
+
+      .row{
+      flex: 0 1 auto;
+      /* The above is shorthand for:
+      flex-grow: 0,
+      flex-shrink: 1,
+      flex-basis: auto
+      */
+    }
+    
+    .content {
+      flex: 1 1 auto;
+      background: repeating-linear-gradient( 180deg, yellow, yellow 48px, black 48px, black 96px); 
+    }
+  
