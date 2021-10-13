@@ -6,7 +6,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../shared/material.module';
+import { MaterialModule } from '../../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserService } from './services/user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

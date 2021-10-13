@@ -8,6 +8,7 @@ import { MaterialModule } from './shared/material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth/auth.service';
 
 
 
@@ -25,7 +26,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
