@@ -1,4 +1,10 @@
-$iconWidth: 300px;
+.container {
+  background: black;
+  height: 100%;
+  width: 100%;
+  display:flex;
+}
+//$iconWidth: 300px;
 mat-card {
     text-align: center;
     background: yellow;
@@ -11,16 +17,12 @@ mat-card {
         justify-content: center;
         min-width: 100%;
         min-height: 100%;
+        flex-direction: column;
     }
   }
-  .container {
-    background: black;
-    height: 100%;
-    width: 100%;
-    display:flex;
-  }
+
   
   mat-form-field {
-    display: block;
-    min-width: $iconWidth;
+    display: flex;
+ //   min-width: $iconWidth;
   }
