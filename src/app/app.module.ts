@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './services/auth/auth.guard';
+import { AuthCanLoadGuard } from './services/auth/auth-can-load.guard';
 
 
 
@@ -27,7 +28,7 @@ import { AuthGuard } from './services/auth/auth.guard';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard,AuthCanLoadGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

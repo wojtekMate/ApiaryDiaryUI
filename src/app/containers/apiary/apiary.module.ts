@@ -17,8 +17,8 @@ const routes: Routes = [
     path: '', component: ApiaryAppComponent,
     children: [
       { path: ':id', component: MainContentComponent },
-      { path: '', component: MainContentComponent }
-    ],canActivate: [AuthGuard]
+      { path: '', component: MainContentComponent}
+    ]
   },
   { path: '**', redirectTo: '' }
 ];

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthCanLoadGuard } from './services/auth/auth-can-load.guard';
 import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./containers/login/login.module').then(m => m.LoginModule)},
-  { path: 'apiary', loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule), canActivate: [AuthGuard] },
+  { path: 'apiary', canLoad:[AuthCanLoadGuard], loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule)},
   { path: '**', redirectTo: 'login' }
 ];
 

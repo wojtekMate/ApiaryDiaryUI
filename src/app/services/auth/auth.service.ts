@@ -16,13 +16,8 @@ export class AuthService {
     return new Promise<void>((resolve, reject) => {
       if (login === this.credentials.login && password === this.credentials.password) {
         this.isUserLoggedIn = true;
-        console.log("resolve");
         resolve();
       } else {
-        console.log("reject");
-
-        console.log(login);
-        console.log(password);
         reject();
       }
     })
