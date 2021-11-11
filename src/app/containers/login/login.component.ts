@@ -31,13 +31,32 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    this.authService.login(this.form.value.login, this.form.value.password)
+  onSubmit2() {
+    this.authService.fakeLogin(this.form.value.login, this.form.value.password)
       .then(this.onSubmitSuccess.bind(this), this.onSubmitFailure);
   }
 
+
+  onSubmit() {
+    this.authService.login(this.form.value.login, this.form.value.password)
+      .subscribe(res => {
+          //this.router.navigate(["contacts"]).then(r => r.valueOf());
+          console.log("zalogowano");
+          this.onSubmitSuccess();
+        },
+        err => {
+          this.form.setErrors({
+            "auth": "Niepoprawna nazwa użytkownika lub hasło."
+          }),
+          this.onSubmitFailure;
+          ;
+
+        });
+  }
+
+
   private onSubmitSuccess() {
-    console.log("this.router");
+    console.log("xxx");
     this.router.navigate(['/apiary']);
   }
 

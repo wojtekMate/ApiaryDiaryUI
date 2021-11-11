@@ -5,7 +5,11 @@ import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./containers/login/login.module').then(m => m.LoginModule)},
-  { path: 'apiary', canLoad:[AuthCanLoadGuard], loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule)},
+  { 
+    path: 'apiary', 
+    canLoad:[AuthCanLoadGuard], loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule),
+    data: { expectedRole: ["Admin", "User"] },
+  },
   { path: '**', redirectTo: 'login' }
 ];
 
