@@ -37,15 +37,10 @@ export class AuthService {
 
 
   login(username: string, password: string): Observable<any> {
-    console.log(username);
-    console.log(password);
-    var url = this.baseUrl + "api/token/auth";
+    var url = this.baseUrl + "Users/Account/sign-in";
     var data = {
-      username: username,
-      password: password,
-      client_id: this.clientId,
-      grant_type: "password",
-      scope: "offline_access profile email"
+      email: username,
+      password: password
     };
 
     return this.getAuthFromServer(url, data);
@@ -60,7 +55,7 @@ export class AuthService {
     return this.http.post<TokenResponse>(url, data)
       .pipe(
         map((res) => {
-          let token = res && res.token;
+          let token = res && res.accessToken;
           if (token) {
             this.setAuth(res);
             return true;
@@ -78,7 +73,7 @@ export class AuthService {
       var data = {
         client_id: this.clientId,
         grant_type: "refresh_token",
-        refresh_token: this.getAuth()!.refresh_token,
+        refresh_token: this.getAuth()!.refreshToken,
         scope: "offline_access profile email"
       }
   
@@ -112,6 +107,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       return sessionStorage.getItem(this.authKey) != null;
+      //return this.isUserLoggedIn;
     }
     return false;
   }

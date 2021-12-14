@@ -6,7 +6,7 @@ import {
 } from "@angular/common/http";
 import {throwError, BehaviorSubject} from "rxjs";
 import {catchError, switchMap, finalize, filter, take} from "rxjs/operators";
-import { AuthService } from "./auth/auth.service";
+import { AuthService } from "./auth.service";
 
 @Injectable()
 export class AuthResponseInterceptor implements HttpInterceptor {
@@ -20,6 +20,7 @@ export class AuthResponseInterceptor implements HttpInterceptor {
   }
 
   addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
+    console.log("Bearer " + token);
     if (token) {
       return req.clone({setHeaders: {Authorization: "Bearer " + token}})
     }
@@ -27,9 +28,12 @@ export class AuthResponseInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): any {
+
+    console.log("Interceptor works");
+
     const authService = this.injector.get(AuthService);
 
-    var token = (authService.isLoggedIn()) ? authService.getAuth()!.token : null;
+    var token = (authService.isLoggedIn()) ? authService.getAuth()!.accessToken : null;
 
     if (token)
       return next.handle(this.addToken(req, token)).pipe(

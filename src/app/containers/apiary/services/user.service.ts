@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { User } from '../models/user';
 
 @Injectable({
@@ -13,6 +14,7 @@ export class UserService {
   // 3 define get to allow component to subscribe to behavior subject
   // 4. "next" on behavior subject to publish date to all subscriers component on load to know component that data is available
   // 5. in next no all store (to not manipulate ) publish only users that why we object assign ()(copy object) only users.
+  private baseUrl: string = environment.baseUrl;
   private _users: BehaviorSubject<User[]>;
   private dataStore: {
     users: User[];
@@ -26,7 +28,9 @@ export class UserService {
    get users(): Observable<User[]> {
     return this._users.asObservable();
   }
-
+  getUser(): Observable<any> {
+    return this.http.get<User>(this.baseUrl +"Users/Account");
+  }
   loadAll() {
     const usersUrl = ''
 

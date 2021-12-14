@@ -9,8 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserService } from './services/user.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from 'src/app/services/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -31,8 +29,6 @@ const routes: Routes = [
     ToolbarComponent
   ],
   imports: [
-    CommonModule,
-    HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule,

@@ -1,6 +1,6 @@
 export interface TokenResponse {
-    token: string,
-    expiration: number,
-    refresh_token: string
+    accessToken: string,
+    expires: number,
+    refreshToken: string,
+    role: string
   }
-  

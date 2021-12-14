@@ -16,6 +16,7 @@ export class SideNavComponent implements OnInit {
   showFiller = false;
   public isScreenSmall: boolean | undefined;
   users: Observable<User[]> | undefined;
+  user: any | undefined;
   constructor(
     private breakpointObserver: BreakpointObserver, 
     private userService: UserService) { }
@@ -27,13 +28,17 @@ export class SideNavComponent implements OnInit {
         .subscribe((state: BreakpointState) => {
           this.isScreenSmall =state.matches;
         })
+    this.user = this.userService.getUser().subscribe((user) => {
+      this.user = user;
+    });
+    console.log("user");
+    console.log(this.user);
+        //this.users = this.userService.users;
+        //this.userService.loadAll(); //load collection
 
-        this.users = this.userService.users;
-        this.userService.loadAll(); //load collection
-
-        this.users.subscribe(data => {
-          console.log(data)
-        })
+        //this.users.subscribe(data => {
+        //  console.log(data)
+        //})
 
 
   }

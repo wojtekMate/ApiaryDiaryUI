@@ -8,7 +8,7 @@ const routes: Routes = [
   { 
     path: 'apiary', 
     canLoad:[AuthCanLoadGuard], loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule),
-    data: { expectedRole: ["Admin", "User"] },
+    data: { expectedRole: ["admin", "user"] },
   },
   { path: '**', redirectTo: 'login' }
 ];
