@@ -29,6 +29,7 @@ const routes: Routes = [
     ToolbarComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
