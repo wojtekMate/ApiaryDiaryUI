@@ -11,6 +11,7 @@ before_install:
 before_script:
   - chmod -R a+x scripts
   - npm install -g @angular/cli
+  - npm update
 script:
 - ./scripts/travis-build.sh
 - ./scripts/travis-success.sh
