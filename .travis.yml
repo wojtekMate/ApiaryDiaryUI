@@ -10,8 +10,8 @@ before_install:
 - sudo apt-get install sshpass
 before_script:
   - chmod -R a+x scripts
-  - npm install -g npm@14.15.4 
-  - npm install -g @angular/cli
+  - npm install node@14.14.0
+  - npm install -g @angular/cli@12.2.1
 script:
 - ./scripts/travis-build.sh
 - ./scripts/travis-success.sh

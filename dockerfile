@@ -3,7 +3,7 @@ FROM node:latest as build
 WORKDIR /appUI
 COPY src ./src
 COPY *.json ./
-RUN npm install -g npm@14.15.4 
+RUN npm install node@14.14.0
 RUN npm install -g @angular/cli@12.2.1
 RUN ng build --prod
 
