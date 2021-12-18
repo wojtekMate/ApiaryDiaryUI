@@ -1,10 +1,10 @@
   ### STAGE 1: Build ###
-FROM node:latest as build
+FROM node:14.18.2 as build
 WORKDIR /appUI
 COPY src ./src
 COPY *.json ./
-RUN npm install node@14.14.0
 RUN npm install -g @angular/cli@12.2.1
+RUN npm install
 RUN ng build --prod
 
 FROM nginx:alpine as deploy
