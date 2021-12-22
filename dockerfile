@@ -5,7 +5,7 @@ COPY src ./src
 COPY *.json ./
 RUN npm install -g @angular/cli@12.2.1
 RUN npm install
-RUN ng build --configuration production
+RUN ng build --configuration=production
 
 FROM nginx:alpine as deploy
 WORKDIR /appUI
