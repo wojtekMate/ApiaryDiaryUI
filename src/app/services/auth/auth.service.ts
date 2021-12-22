@@ -36,14 +36,25 @@ export class AuthService {
   }
 
 
-  login(username: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<any> {
     var url = this.baseUrl + "Users/Account/sign-in";
     var data = {
-      email: username,
+      email: email,
       password: password
     };
 
     return this.getAuthFromServer(url, data);
+  }
+  
+  SignUp(email: string, password: string): Observable<any> {
+    var url = this.baseUrl + "Users/Account/sign-up";
+    var data = {
+      email: email,
+      password: password,
+      role: "user",
+      claims: { "permissions": ["all"]}
+    };
+    return this.http.post(url, data);
   }
 
   logout(): boolean {
