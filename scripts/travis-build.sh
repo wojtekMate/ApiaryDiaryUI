@@ -1,2 +1,2 @@
 #!/bin/bash
-ng build --configuration prod
+ng build --configuration=production
