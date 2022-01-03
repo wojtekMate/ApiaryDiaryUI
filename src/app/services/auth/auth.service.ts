@@ -35,6 +35,15 @@ export class AuthService {
     })
   }
 
+  ActivateAccount(token: string): Observable<any> {
+    var url = this.baseUrl + "Users/Account/Activate";
+    var data = {
+      token: token
+    };
+console.log(data);
+console.log(url);
+    return this.http.put(url, data);
+  }
 
   login(email: string, password: string): Observable<any> {
     var url = this.baseUrl + "Users/Account/sign-in";
@@ -43,7 +52,7 @@ export class AuthService {
       password: password
     };
 
-    return this.getAuthFromServer(url, data);
+    return this.http.post(url, data);
   }
   
   SignUp(email: string, password: string): Observable<any> {

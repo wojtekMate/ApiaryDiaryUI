@@ -1,0 +1,29 @@
+.myContainer {
+    background: black;
+    height: 100%;
+    width: 100%;
+    display:flex;
+  }
+  //$iconWidth: 300px;
+  mat-card {
+      text-align: center;
+      background: yellow;
+      margin: auto;
+  
+      display: flex;
+      @media (max-width:720px){
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 100%;
+          min-height: 100%;
+          flex-direction: column;
+      }
+    }
+  
+    
+    mat-form-field {
+      display: flex;
+   //   min-width: $iconWidth;
+    }
+  

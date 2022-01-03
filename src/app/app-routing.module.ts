@@ -6,6 +6,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./containers/login/login.module').then(m => m.LoginModule)},
   { path: 'register', loadChildren: () => import('./containers/register/register.module').then(m => m.RegisterModule)},
+  { path: 'activate', loadChildren: () => import('./containers/activate-account/activate-account.module').then(m => m.ActivateAccountModule)},
   { 
     path: 'apiary', 
     canLoad:[AuthCanLoadGuard], loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule),
