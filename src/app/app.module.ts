@@ -13,7 +13,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { AuthCanLoadGuard } from './services/auth/auth-can-load.guard';
 import { AuthResponseInterceptor } from './services/auth/auth.interceptor';
 
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -24,6 +24,9 @@ import { AuthResponseInterceptor } from './services/auth/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'
+    }), // ToastrModule added
     MaterialModule,
     FlexLayoutModule,
     FormsModule,

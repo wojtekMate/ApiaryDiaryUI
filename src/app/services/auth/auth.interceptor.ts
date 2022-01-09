@@ -34,7 +34,7 @@ export class AuthResponseInterceptor implements HttpInterceptor {
     const authService = this.injector.get(AuthService);
 
     var token = (authService.isLoggedIn()) ? authService.getAuth()!.accessToken : null;
-
+    console.log(token);
     if (token)
       return next.handle(this.addToken(req, token)).pipe(
         catchError(error => {

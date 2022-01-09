@@ -52,7 +52,7 @@ console.log(url);
       password: password
     };
 
-    return this.http.post(url, data);
+    return this.getAuthFromServer(url, data);
   }
   
   SignUp(email: string, password: string): Observable<any> {
@@ -77,6 +77,8 @@ console.log(url);
         map((res) => {
           let token = res && res.accessToken;
           if (token) {
+            console.log("token nie null");
+            console.log(token);
             this.setAuth(res);
             return true;
           }
@@ -89,18 +91,17 @@ console.log(url);
   }
 
     refreshToken(): Observable<any> {
-      var url = this.baseUrl + "api/token/auth";
+      var url = this.baseUrl + "Account/refresh-tokens";
       var data = {
-        client_id: this.clientId,
-        grant_type: "refresh_token",
-        refresh_token: this.getAuth()!.refreshToken,
-        scope: "offline_access profile email"
+        refresh_token: this.getAuth()!.refreshToken
       }
-  
+      console.log(data);
+      console.log(url);
       return this.getAuthFromServer(url, data);
     }
 
   setAuth(auth: TokenResponse | null): boolean {
+    console.log("serAuth")
     if (isPlatformBrowser(this.platformId)) {
       if (auth) {
         sessionStorage.setItem(

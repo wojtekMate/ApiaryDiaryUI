@@ -6,11 +6,13 @@
 }
 //$iconWidth: 300px;
 mat-card {
+    max-width: 280px;
+    min-width: 280px;
     text-align: center;
     background: yellow;
     margin: auto;
-
-    display: flex;
+    padding: auto;
+    display: block;
     @media (max-width:720px){
         display: flex;
         align-items: center;
@@ -21,8 +23,8 @@ mat-card {
     }
   }
 
-  
-  mat-form-field {
-    display: flex;
- //   min-width: $iconWidth;
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
   }

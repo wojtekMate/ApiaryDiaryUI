@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   password = '';
 
   constructor(    
+    private toastr : ToastrService,
     private builder: FormBuilder,
     private router: Router,
     private authService : AuthService) 
@@ -32,24 +34,34 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loginInvalid = false;
+    if(!this.form.valid) {
+      this.toastr.error('something went wrong...','Not valid form',{
+        positionClass: 'toast-top-right' 
+      });
+      this.loginInvalid = true;
+      return
+    }
+
     this.authService.login(this.form.value.login, this.form.value.password)
       .subscribe(res => {
           this.onSubmitSuccess();
         },
         err => {
-          this.form.setErrors({
-            "auth": "Niepoprawna nazwa użytkownika lub hasło."
-          }),
           this.onSubmitFailure;
         });
   }
 
-
   private onSubmitSuccess() {
+    console.log("ss");
     this.router.navigate(['/apiary']);
+    console.log("ss2");
   }
 
   private onSubmitFailure() {
+    this.toastr.success('something went wrong...', 'Error',{
+      positionClass: 'toast-top-right' 
+    });
     console.log('Login or password is incorrect, please try again!');
   }
 }

@@ -28,11 +28,11 @@ export class SideNavComponent implements OnInit {
         .subscribe((state: BreakpointState) => {
           this.isScreenSmall =state.matches;
         })
-    this.user = this.userService.getUser().subscribe((user) => {
-      this.user = user;
+        this.user = this.userService.getUser().subscribe((user) => {
+        this.user = user;
+        console.log(user);
     });
-    console.log("user");
-    console.log(this.user);
+
         //this.users = this.userService.users;
         //this.userService.loadAll(); //load collection
 

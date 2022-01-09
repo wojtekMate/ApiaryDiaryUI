@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -8,18 +10,19 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
+  changeCount: number = 0;
   form: FormGroup;
-  public RegisterInvalid = false;
+  public registerInvalid = false;
   private formSubmitAttempt = false;
-  private returnUrl: string;
   login = '';
   password = '';
   constructor
   (    
     private builder: FormBuilder,
     private router: Router,
-    private authService : AuthService
+    private authService : AuthService,
+    private toastr: ToastrService,
   ) 
     { 
       this.form = this.builder.group({
@@ -27,29 +30,40 @@ export class RegisterComponent implements OnInit {
         password: ['', Validators.required]
       });  
     }
-  ngOnInit(): void {
-    
-  }
+
   onSubmit() {
+    console.log(this.form.hasError);
+    console.log(this.form);
+    this.registerInvalid = false;
+    if(!this.form.valid) {
+      this.toastr.error('something went wrong...','Not valid form',{
+        positionClass: 'toast-top-right' 
+      });
+      this.registerInvalid = true;
+      return
+    }
     this.authService.SignUp(this.form.value.login, this.form.value.password)
       .subscribe(res => {
         console.log("success");
         this.onSubmitSuccess();
         },
         err => {
-          this.form.setErrors({
-            "auth": "Niepoprawna nazwa użytkownika lub hasło."
-          }),
+          this.registerInvalid = true;
           console.log("err");
           this.onSubmitFailure()
         });
   }
 
   private onSubmitSuccess() {
+    this.toastr.success('Check you email.', 'Success',{
+      positionClass: 'toast-top-right' 
+    });
     this.router.navigate(['/login']);
   }
 
   private onSubmitFailure() {
-    console.log('Login or password is incorrect, please try again!');
+    this.toastr.error('something went wrong...','Error!',{
+      positionClass: 'toast-top-right' 
+    });
   }
 }
