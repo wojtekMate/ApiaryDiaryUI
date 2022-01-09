@@ -53,9 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
   private onSubmitSuccess() {
-    console.log("ss");
     this.router.navigate(['/apiary']);
-    console.log("ss2");
   }
 
   private onSubmitFailure() {

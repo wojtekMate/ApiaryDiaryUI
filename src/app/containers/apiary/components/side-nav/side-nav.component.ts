@@ -30,17 +30,12 @@ export class SideNavComponent implements OnInit {
         })
         this.user = this.userService.getUser().subscribe((user) => {
         this.user = user;
-        console.log(user);
     });
-
         //this.users = this.userService.users;
         //this.userService.loadAll(); //load collection
 
         //this.users.subscribe(data => {
         //  console.log(data)
         //})
-
-
   }
-
 }

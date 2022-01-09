@@ -40,8 +40,6 @@ export class AuthService {
     var data = {
       token: token
     };
-console.log(data);
-console.log(url);
     return this.http.put(url, data);
   }
 
@@ -77,8 +75,6 @@ console.log(url);
         map((res) => {
           let token = res && res.accessToken;
           if (token) {
-            console.log("token nie null");
-            console.log(token);
             this.setAuth(res);
             return true;
           }
@@ -95,13 +91,10 @@ console.log(url);
       var data = {
         refresh_token: this.getAuth()!.refreshToken
       }
-      console.log(data);
-      console.log(url);
       return this.getAuthFromServer(url, data);
     }
 
   setAuth(auth: TokenResponse | null): boolean {
-    console.log("serAuth")
     if (isPlatformBrowser(this.platformId)) {
       if (auth) {
         sessionStorage.setItem(
