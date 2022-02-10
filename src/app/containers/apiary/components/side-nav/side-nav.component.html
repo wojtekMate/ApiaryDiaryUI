@@ -11,7 +11,18 @@
       </div>
       <div class="row footer">
         <mat-nav-list style="padding: 0; ">
-
+          <mat-list-item class="icon yellow">
+            <a matLine  [routerLink]='["/apiary"]'><mat-icon svgIcon="hive"></mat-icon>  Apiary</a> 
+          </mat-list-item>
+          <mat-list-item class="icon black">
+            <a matLine  [routerLink]='["/apiary/bees"]'><mat-icon svgIcon="honey-comb" class="svg"></mat-icon> Bees</a> 
+          </mat-list-item>
+          <mat-list-item class="icon yellow">
+            <a matLine  [routerLink]='["/apiary/honey"]'><mat-icon svgIcon="honey-jar"></mat-icon>  Honey</a> 
+          </mat-list-item>
+          <mat-list-item class="icon black">
+            <a matLine  [routerLink]='["/apiary/account"]'><mat-icon svgIcon="ac-1"></mat-icon> Account</a> 
+          </mat-list-item>
           <div *ngFor="let user of users | async; let i = index" [attr.data-index]="i">
             <div *ngIf="i%2 == 0">
               <mat-list-item class="icon yellow">

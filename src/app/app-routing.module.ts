@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'activate', loadChildren: () => import('./containers/activate-account/activate-account.module').then(m => m.ActivateAccountModule)},
   { 
     path: 'apiary', 
-    canLoad:[AuthCanLoadGuard], loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule),
+    canLoad:[AuthCanLoadGuard], 
+    loadChildren: () => import('./containers/apiary/apiary.module').then(m => m.ApiaryModule),
     data: { expectedRole: ["admin", "user"] },
   },
   { path: '**', redirectTo: 'login' }
@@ -20,4 +21,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+}

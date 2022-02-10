@@ -4,12 +4,18 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import decode from "jwt-decode";
 import { TokenResponse } from '../../interfaces/tokenResponse';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthCanLoadGuard implements CanLoad {
+  private IsDevelopment: boolean = !environment.production;
   constructor(private authService : AuthService, private router : Router) {}
 
   canLoad(route : Route): Observable<boolean> | Promise<boolean> | boolean {
+    if(this.IsDevelopment){
+      return true;
+    }
+
     if(!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return false;
