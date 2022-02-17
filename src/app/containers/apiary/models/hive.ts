@@ -1,5 +1,7 @@
 export class Hive {
     id: number;
-    title: string;
-    date: Date;
+    internalNumber: number;
+    race: string;
+    queenBirthDate: Date;
+    hiveType: string
 }

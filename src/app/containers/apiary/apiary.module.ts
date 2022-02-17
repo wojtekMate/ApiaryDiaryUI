@@ -12,6 +12,12 @@ import { UserService } from './services/user.service';
 import { AccountComponent } from './components/account/account.component';
 import { HoneyComponent } from './components/honey/honey.component';
 import { BeesComponent } from './components/bees/bees.component';
+import { AddHiveDialogComponent } from './components/add-hive-dialog/add-hive-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatMenu } from '@angular/material/menu';
+import { HiveService } from './services/hive.service';
+import { SummaryComponent } from './components/summary/summary.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [
   {
@@ -35,18 +41,21 @@ const routes: Routes = [
     ToolbarComponent,
     AccountComponent,
     HoneyComponent,
-    BeesComponent
+    BeesComponent,
+    AddHiveDialogComponent,
+    SummaryComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [
-    UserService
+    UserService,
+    HiveService
   ]
 })
 export class ApiaryModule { }

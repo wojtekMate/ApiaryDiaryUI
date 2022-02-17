@@ -1,3 +1,22 @@
 <mat-card>
-    <h1>Julio ! wyjdziesz za mnie ?</h1>
-</mat-card>
+    <mat-card-header>
+      <!-- <mat-icon mat-card-avatar svgIcon="{{user.avatar}}"></mat-icon> -->
+      <mat-card-title>Apiary</mat-card-title>
+      <mat-card-subtitle>
+        <!-- Birthday {{ user.birthDate | date: 'd LLLL'}} -->
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Apiary view">
+            <div class="flex-container">
+                <div *ngFor='let hive of hives | async'></div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Summary">
+            <app-summary [hives]="hives"></app-summary> 
+          </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+  

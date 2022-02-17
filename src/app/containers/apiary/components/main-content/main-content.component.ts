@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Hive } from '../../models/hive';
 import { User } from '../../models/user';
+import { HiveService } from '../../services/hive.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -9,11 +12,11 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
-  
-  user: User;
-  constructor(private route: ActivatedRoute, private service: UserService) { }
+  hives: Observable<Hive[]>;
+  constructor(private route: ActivatedRoute, private hiveService: HiveService) { }
 
   ngOnInit(): void {
+   this.hiveService.getAll();
+   this.hives = this.hiveService.hives;
   }
-
 }

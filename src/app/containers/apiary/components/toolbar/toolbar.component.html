@@ -2,5 +2,17 @@
     <button mat-button (click)="toggleSidenav.emit()" class="sidenav-toggle">
         <mat-icon>menu</mat-icon>
     </button>
+
     <span>ApiaryDiary</span>
+
+    <span class="example-spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openAddHiveDialog()">Add hive</button>
+    </mat-menu>
 </mat-toolbar>
+

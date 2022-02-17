@@ -44,12 +44,10 @@ export class RegisterComponent {
     }
     this.authService.SignUp(this.form.value.login, this.form.value.password)
       .subscribe(res => {
-        console.log("success");
         this.onSubmitSuccess();
         },
         err => {
           this.registerInvalid = true;
-          console.log("err");
           this.onSubmitFailure()
         });
   }
