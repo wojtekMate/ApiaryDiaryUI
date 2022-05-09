@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.form.value.login, this.form.value.password)
-      .subscribe(res => {
+      .subscribe((res) => {
           this.onSubmitSuccess();
         },
         err => {
-          this.onSubmitFailure;
+          this.onSubmitFailure(err);
         });
   }
 
@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/apiary']);
   }
 
-  private onSubmitFailure() {
-    this.toastr.success('something went wrong...', 'Error',{
+  private onSubmitFailure(err) {
+    this.toastr.success(err, 'Error',{
       positionClass: 'toast-top-right' 
     });
     console.log('Login or password is incorrect, please try again!');
